@@ -1,5 +1,5 @@
 window.onload=function() {
-    Canvas=document.getElementById("gc");
+    Canvas=document.getElementById("game");
     CTX=Canvas.getContext("2d");
     document.addEventListener("keydown",keyPush);
     setInterval(game,1000/15);
@@ -7,7 +7,7 @@ window.onload=function() {
 
 SnakeX=SnakeY=10;
 scale=17;
-AppleX=AppleY=15;
+AppleX=AppleY=5;
 DirX=DirY=0;
 Body=[];
 DefalutLength = 5;
@@ -35,8 +35,8 @@ function game() {
 
     if(AppleX===SnakeX && AppleY===SnakeY) {
         DefalutLength++;
-        AppleX=Math.floor(Math.random()*tc);
-        AppleY=Math.floor(Math.random()*tc);
+        AppleX=Math.floor(Math.random()*bx);
+        AppleY=Math.floor(Math.random()*by);
     }
 
     CTX.fillStyle="red";
