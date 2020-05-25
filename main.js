@@ -1,3 +1,11 @@
+/* // canvas
+window.onload = window.onresize = function() {
+    let canvas = document.getElementById('gc');
+    canvas.width = window.innerWidth * 1;
+    canvas.height = window.innerHeight * 1;
+}
+ */
+
 window.onload=function() {
     canv=document.getElementById("gc");
     ctx=canv.getContext("2d");
