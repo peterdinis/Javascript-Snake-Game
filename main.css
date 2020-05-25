@@ -1,0 +1,30 @@
+:root {
+    --firstColor: #006699;
+    --firstHeigh: 500px;
+    --firstWidth: 500px;
+    --globalFont: "Verdana"
+}
+
+#heading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--firstColor);
+    font-weight: bold;
+    
+}
+
+canvas#gc{
+    height: var(--firstHeight);
+    width: var(--firstWidth);
+    position: relative;
+    left: 700px;
+}
+
+footer p {
+    font-family: var(--globalFont);
+    display: flex;
+    font-weight: bold;
+    margin-left: 15px;
+}
+
