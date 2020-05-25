@@ -1,50 +1,52 @@
 window.onload=function() {
     Canvas=document.getElementById("game");
     CTX=Canvas.getContext("2d");
-    document.addEventListener("keydown",keyPush);
+    document.addEventListener("keydown",StlacenieSipky);
     setInterval(game,1000/15);
 }
 
+Bx=By=0;
 SnakeX=SnakeY=10;
-scale=17;
 AppleX=AppleY=5;
-DirX=DirY=0;
-Body=[];
-DefalutLength = 5;
+Telo=[];
+Dlzka = 5;
+Bx=Math.floor(Canvas.width/scale);
+By=Math.floor(Canvas.height/scale);
+
+function stena() {
+    if(SnakeX<0) {SnakeX= Bx-1;}
+    if(SnakeX>Bx-1) {SnakeX= 0;}
+    if(SnakeY<0) {SnakeY= By-1;}
+    if(SnakeY>By-1) {SnakeY= 0;}
+}
 
 function game() {
-    bx=Math.floor(Canvas.width/scale);
-    by=Math.floor(Canvas.height/scale);
+    stena();
     SnakeX+=DirX;
     SnakeY+=DirY;
-    if(SnakeX<0) {SnakeX= bx-1;}
-    if(SnakeX>bx-1) {SnakeX= 0;}
-    if(SnakeY<0) {SnakeY= by-1;}
-    if(SnakeY>by-1) {SnakeY= 0;}
-
     CTX.fillStyle="black";
     CTX.fillRect(0,0,Canvas.width,Canvas.height);
 
     CTX.fillStyle="lime";
-    for(var i=0; i<Body.length; i++) {
-        CTX.fillRect(Body[i].x*scale,Body[i].y*scale,scale-2,scale-2);
-        if(Body[i].x===SnakeX && Body[i].y===SnakeY) {DefalutLength = 5;}
+    for(var i=0; i<Telo.length; i++) {
+        CTX.fillRect(Telo[i].x*scale,Telo[i].y*scale,15,15);
+        if(Telo[i].x===SnakeX && Telo[i].y===SnakeY) {Dlzka = 5;}
     }
-    Body.push({x:SnakeX,y:SnakeY});
-    while(Body.length>DefalutLength) {Body.shift();}
+    Telo.push({x:SnakeX,y:SnakeY});
+    while(Telo.length>Dlzka) {Telo.shift();}
 
     if(AppleX===SnakeX && AppleY===SnakeY) {
-        DefalutLength++;
-        AppleX=Math.floor(Math.random()*bx);
-        AppleY=Math.floor(Math.random()*by);
+        Dlzka++;
+        AppleX=Math.floor(Math.random()*Bx);
+        AppleY=Math.floor(Math.random()*By);
     }
 
     CTX.fillStyle="red";
-    CTX.fillRect(AppleX*scale,AppleY*scale,scale-2,scale-2);
+    CTX.fillRect(AppleX*17,AppleY*17,15,15);
 }
 
-function keyPush(evt) {
-    switch(evt.keyCode) {
+function StlacenieSipky(Sipka) {
+    switch(Sipka.keyCode) {
         case 37:
             DirX=-1;DirY=0;
             break;
@@ -58,4 +60,5 @@ function keyPush(evt) {
             DirX=0;DirY=1;
             break;
     }
+
 }
