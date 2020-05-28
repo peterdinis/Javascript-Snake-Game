@@ -1,64 +1,61 @@
-window.onload=function() {
-    Canvas=document.getElementById("game");
+window.onload = function() {
+    Canvas=document.getElementById("Hra");
     CTX=Canvas.getContext("2d");
-    document.addEventListener("keydown",StlacenieSipky);
+    BX=Math.floor(Canvas.width/17);
+    BY=Math.floor(Canvas.height/17);
+    AX=Math.floor(Math.random()*BX);
+    AY=Math.floor(Math.random()*BY);
+    document.addEventListener("keydown",keyPush);
     setInterval(game,1000/15);
 }
 
-Bx=By=0;
-SnakeX=SnakeY=10;
-AppleX=AppleY=5;
+SX=SY=10;
+X=Y=0;
 Telo=[];
 Dlzka = 5;
-Bx=Math.floor(Canvas.width/scale);
-By=Math.floor(Canvas.height/scale);
-
-function stena() {
-    if(SnakeX<0) {SnakeX= Bx-1;}
-    if(SnakeX>Bx-1) {SnakeX= 0;}
-    if(SnakeY<0) {SnakeY= By-1;}
-    if(SnakeY>By-1) {SnakeY= 0;}
-}
 
 function game() {
-    stena();
-    SnakeX+=DirX;
-    SnakeY+=DirY;
+    SX+=X;
+    SY+=Y;
+    if(SX<0) {SX= BX-1;}
+    if(SX>BX-1) {SX= 0;}
+    if(SY<0) {SY= BY-1;}
+    if(SY>BY-1) {SY= 0;}
+
     CTX.fillStyle="black";
     CTX.fillRect(0,0,Canvas.width,Canvas.height);
 
     CTX.fillStyle="lime";
     for(var i=0; i<Telo.length; i++) {
-        CTX.fillRect(Telo[i].x*scale,Telo[i].y*scale,15,15);
-        if(Telo[i].x===SnakeX && Telo[i].y===SnakeY) {Dlzka = 5;}
+        CTX.fillRect(Telo[i].x*17,Telo[i].y*17,15,15);
+        if(Telo[i].x===SX && Telo[i].y===SY) {Dlzka = 5;}
     }
-    Telo.push({x:SnakeX,y:SnakeY});
+    Telo.push({x:SX,y:SY});
     while(Telo.length>Dlzka) {Telo.shift();}
 
-    if(AppleX===SnakeX && AppleY===SnakeY) {
+    if(AX===SX && AY===SY) {
         Dlzka++;
-        AppleX=Math.floor(Math.random()*Bx);
-        AppleY=Math.floor(Math.random()*By);
+        AX=Math.floor(Math.random()*BX);
+        AY=Math.floor(Math.random()*BY);
     }
 
     CTX.fillStyle="red";
-    CTX.fillRect(AppleX*17,AppleY*17,15,15);
+    CTX.fillRect(AX*17,AY*17,15,15);
 }
 
-function StlacenieSipky(Sipka) {
-    switch(Sipka.keyCode) {
+function keyPush(evt) {
+    switch(evt.keyCode) {
         case 37:
-            DirX=-1;DirY=0;
+            X=-1;Y=0;
             break;
         case 38:
-            DirX=0;DirY=-1;
+            X=0;Y=-1;
             break;
         case 39:
-            DirX=1;DirY=0;
+            X=1;Y=0;
             break;
         case 40:
-            DirX=0;DirY=1;
+            X=0;Y=1;
             break;
     }
-
 }
