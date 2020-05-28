@@ -69,9 +69,7 @@ function game() {
         }
         if (!Prehral) {
             Telo.push({x: SX, y: SY});
-            while (Telo.length > Dlzka) {
-                Telo.shift();
-            }
+            while (Telo.length > Dlzka) {Telo.shift();}
 
             if (AX === SX && AY === SY) {
                 Dlzka++;
