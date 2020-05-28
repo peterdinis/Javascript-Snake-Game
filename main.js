@@ -1,61 +1,109 @@
-window.onload=function() {
-    Canvas=document.getElementById("game");
-    CTX=Canvas.getContext("2d");
+window.onload = function() {
+    canv=document.getElementById("Hra");
+    ctx=canv.getContext("2d");
     document.addEventListener("keydown",keyPush);
     setInterval(game,1000/15);
 }
 
-SnakeX=SnakeY=10;
-scale=17;
-AppleX=AppleY=5;
-DirX=DirY=0;
-Body=[];
-DefalutLength = 5;
+SX = SY = 10;
+SirkaStvorca = Stena = 20;
+AX = AY = 15;
+X = Y = 0;
+Telo = [];
+Dlzka = 5;
+Start = true;
+PrveKolo = true;
+Prehral = false;
 
-function game() {
-    bx=Math.floor(Canvas.width/scale);
-    by=Math.floor(Canvas.height/scale);
-    SnakeX+=DirX;
-    SnakeY+=DirY;
-    if(SnakeX<0) {SnakeX= bx-1;}
-    if(SnakeX>bx-1) {SnakeX= 0;}
-    if(SnakeY<0) {SnakeY= by-1;}
-    if(SnakeY>by-1) {SnakeY= 0;}
-
-    CTX.fillStyle="black";
-    CTX.fillRect(0,0,Canvas.width,Canvas.height);
-
-    CTX.fillStyle="lime";
-    for(var i=0; i<Body.length; i++) {
-        CTX.fillRect(Body[i].x*scale,Body[i].y*scale,scale-2,scale-2);
-        if(Body[i].x===SnakeX && Body[i].y===SnakeY) {DefalutLength = 5;}
-    }
-    Body.push({x:SnakeX,y:SnakeY});
-    while(Body.length>DefalutLength) {Body.shift();}
-
-    if(AppleX===SnakeX && AppleY===SnakeY) {
-        DefalutLength++;
-        AppleX=Math.floor(Math.random()*bx);
-        AppleY=Math.floor(Math.random()*by);
-    }
-
-    CTX.fillStyle="red";
-    CTX.fillRect(AppleX*scale,AppleY*scale,scale-2,scale-2);
+function Reset() {
+    Start = true;
+    PrveKolo = true;
+    SX = SY = 10;
+    AX = AY = 15;
+    X = Y = 0;
+    Telo = [];
 }
 
+function Prehra() {
+    ctx.clearRect(0,0,canv.width,canv.height);
+    ctx.fillStyle="black";
+    ctx.fillRect(0,0,canv.width,canv.height);
+    ctx.fillStyle="red";
+    ctx.font = "20px Verdana";
+    ctx.fillText("Prehral si!",50,50);
+    ctx.fillText("Tvoje skore je:",50,80);
+    ctx.fillText(Dlzka,200,80);
+    ctx.fillText("Stlac \"Enter\" pre restart hry",50,100);
+    Reset();
+}
+
+function game() {
+    if (!Start) {
+        SX += X;
+        SY += Y;
+        if (SX < 0) {
+            SX = Stena - 1;
+        }
+        if (SX > Stena - 1) {
+            SX = 0;
+        }
+        if (SY < 0) {
+            SY = Stena - 1;
+        }
+        if (SY > Stena - 1) {
+            SY = 0;
+        }
+        ctx.fillStyle = "black";
+        ctx.fillRect(0, 0, canv.width, canv.height);
+
+        ctx.fillStyle = "lime";
+        for (var i = 0; i < Telo.length; i++) {
+            ctx.fillRect(Telo[i].x * SirkaStvorca, Telo[i].y * SirkaStvorca, SirkaStvorca - 2, SirkaStvorca - 2);
+            if (Telo[i].x === SX && Telo[i].y === SY) {
+                if (!PrveKolo) {
+                    Prehra();
+                    Prehral = true;
+                }
+                Dlzka = 5;
+            }
+        }
+        if (!Prehral) {
+            Telo.push({x: SX, y: SY});
+            while (Telo.length > Dlzka) {
+                Telo.shift();
+            }
+
+            if (AX === SX && AY === SY) {
+                Dlzka++;
+                AX = Math.floor(Math.random() * Stena);
+                AY = Math.floor(Math.random() * Stena);
+            }
+            ctx.fillStyle = "red";
+            ctx.fillRect(AX * SirkaStvorca, AY * SirkaStvorca, SirkaStvorca - 2, SirkaStvorca - 2);
+        }
+    }
+}
 function keyPush(evt) {
     switch(evt.keyCode) {
         case 37:
-            DirX=-1;DirY=0;
+            X=-1;Y=0;
+            PrveKolo = false;
             break;
         case 38:
-            DirX=0;DirY=-1;
+            X=0;Y=-1;
+            PrveKolo = false;
             break;
         case 39:
-            DirX=1;DirY=0;
+            X=1;Y=0;
+            PrveKolo = false;
             break;
         case 40:
-            DirX=0;DirY=1;
+            X=0;Y=1;
+            PrveKolo = false;
+            break;
+        case 13:
+            Start = false;
+            Prehral = false;
             break;
     }
 }

@@ -1,0 +1,28 @@
+:root {
+    --firstColor: #006699;
+    --firstHeight: 500px;
+    --firstWidth: 500px;
+    --globalFont: "Verdana"
+}
+
+#heading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--firstColor);
+    font-weight: bold;
+}
+
+canvas#Hra{
+    height: var(--firstHeight);
+    width: var(--firstWidth);
+    padding: 0;
+    margin: auto;
+    display: block;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+}
