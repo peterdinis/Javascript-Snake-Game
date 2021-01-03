@@ -1,3 +1,6 @@
+alert("Hru snake spustíme klávseou Enter");
+
+
 window.onload = function() {
     canv=document.getElementById("Hra");
     ctx=canv.getContext("2d");
@@ -33,7 +36,7 @@ function Prehra() {
     ctx.fillText("Prehral si!",50,50);
     ctx.fillText("Tvoje skore je:",50,80);
     ctx.fillText(Dlzka,200,80);
-    ctx.fillText("Stlac \"Enter\" pre restart hry",50,100);
+    ctx.fillText("Stlač klávesu \"Enter\" pre reštart hry",50,100);
     Reset();
 }
 
