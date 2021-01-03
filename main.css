@@ -11,14 +11,13 @@
     align-items: center;
     color: var(--firstColor);
     font-weight: bold;
+    flex: 1;
 }
 
 canvas#Hra{
     height: var(--firstHeight);
     width: var(--firstWidth);
-    padding: 0;
     margin: auto;
-    display: block;
     position: fixed;
     top: 0;
     bottom: 0;
