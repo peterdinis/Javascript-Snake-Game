@@ -32,7 +32,7 @@ function Prehra() {
     ctx.fillStyle="black";
     ctx.fillRect(0,0,canv.width,canv.height);
     ctx.fillStyle="red";
-    ctx.font = "24px Verdana";
+    ctx.font = "18px Verdana";
     ctx.fillText("Prehral si!",50,50);
     ctx.fillText("Tvoje skore je:",50,80);
     ctx.fillText(Dlzka,200,80);
