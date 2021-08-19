@@ -6,12 +6,11 @@
 }
 
 #heading {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: var(--firstColor);
-    font-weight: bold;
-    flex: 1;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   margin-top: 1rem;
+   color: var(--firstColor);
 }
 
 canvas#Hra{
