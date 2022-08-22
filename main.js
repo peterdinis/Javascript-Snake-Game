@@ -60,7 +60,7 @@ function game() {
         ctx.fillRect(0, 0, canv.width, canv.height);
 
         ctx.fillStyle = "lime";
-        for (var i = 0; i < Telo.length; i++) {
+        for (let i = 0; i < Telo.length; i++) {
             ctx.fillRect(Telo[i].x * SirkaStvorca, Telo[i].y * SirkaStvorca, SirkaStvorca - 2, SirkaStvorca - 2);
             if (Telo[i].x === SX && Telo[i].y === SY) {
                 if (!PrveKolo) {
