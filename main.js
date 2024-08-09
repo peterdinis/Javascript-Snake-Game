@@ -1,11 +1,11 @@
 alert("Hru snake spustíme klávseou Enter");
 
 
-window.onload = function() {
-    canv=document.getElementById("Hra");
-    ctx=canv.getContext("2d");
-    document.addEventListener("keydown",keyPush);
-    setInterval(game,1000/15);
+window.onload = function () {
+    canv = document.getElementById("Hra");
+    ctx = canv.getContext("2d");
+    document.addEventListener("keydown", keyPush);
+    setInterval(game, 1000 / 15);
 }
 
 SX = SY = 10;
@@ -28,15 +28,15 @@ function Reset() {
 }
 
 function Prehra() {
-    ctx.clearRect(0,0,canv.width,canv.height);
-    ctx.fillStyle="black";
-    ctx.fillRect(0,0,canv.width,canv.height);
-    ctx.fillStyle="red";
+    ctx.clearRect(0, 0, canv.width, canv.height);
+    ctx.fillStyle = "black";
+    ctx.fillRect(0, 0, canv.width, canv.height);
+    ctx.fillStyle = "red";
     ctx.font = "18px Verdana";
-    ctx.fillText("Prehral si!",50,50);
-    ctx.fillText("Tvoje skore je:",50,80);
-    ctx.fillText(Dlzka,200,80);
-    ctx.fillText("Stlač klávesu \"Enter\" pre reštart hry",50,100);
+    ctx.fillText("Prehral si!", 50, 50);
+    ctx.fillText("Tvoje skore je:", 50, 80);
+    ctx.fillText(Dlzka, 200, 80);
+    ctx.fillText("Stlač klávesu \"Enter\" pre reštart hry", 50, 100);
     Reset();
 }
 
@@ -71,8 +71,13 @@ function game() {
             }
         }
         if (!Prehral) {
-            Telo.push({x: SX, y: SY});
-            while (Telo.length > Dlzka) {Telo.shift();}
+            Telo.push({
+                x: SX,
+                y: SY
+            });
+            while (Telo.length > Dlzka) {
+                Telo.shift();
+            }
 
             if (AX === SX && AY === SY) {
                 Dlzka++;
@@ -84,22 +89,27 @@ function game() {
         }
     }
 }
+
 function keyPush(evt) {
-    switch(evt.keyCode) {
+    switch (evt.keyCode) {
         case 37:
-            X=-1;Y=0;
+            X = -1;
+            Y = 0;
             PrveKolo = false;
             break;
         case 38:
-            X=0;Y=-1;
+            X = 0;
+            Y = -1;
             PrveKolo = false;
             break;
         case 39:
-            X=1;Y=0;
+            X = 1;
+            Y = 0;
             PrveKolo = false;
             break;
         case 40:
-            X=0;Y=1;
+            X = 0;
+            Y = 1;
             PrveKolo = false;
             break;
         case 13:

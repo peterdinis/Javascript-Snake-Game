@@ -1,26 +1,25 @@
 :root {
-    --firstColor: #006699;
-    --firstHeight: 500px;
-    --firstWidth: 500px;
-    --globalFont: "Verdana"
+  --firstColor: #006699;
+  --firstHeight: 500px;
+  --firstWidth: 500px;
+  --globalFont: "Verdana";
 }
 
 #heading {
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   margin-top: 1rem;
-   color: var(--firstColor);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+  color: var(--firstColor);
 }
 
-canvas#Hra{
-    height: var(--firstHeight);
-    width: var(--firstWidth);
-    margin: auto;
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-
+canvas#Hra {
+  height: var(--firstHeight);
+  width: var(--firstWidth);
+  margin: auto;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
