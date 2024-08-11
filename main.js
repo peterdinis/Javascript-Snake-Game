@@ -1,5 +1,4 @@
-alert("Hru snake spustíme klávseou Enter");
-
+alert("Hru hadíka spustíme klávseou Enter");
 
 window.onload = function () {
     canv = document.getElementById("Hra");
